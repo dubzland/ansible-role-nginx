@@ -1,0 +1,15 @@
+---
+- name: ensure nginx is installed
+  apt:
+    name: nginx
+    state: present
+  tags:
+    - nginx
+    - apt
+
+- name: ensure the default site is not configured
+  file:
+    name: /etc/nginx/sites-enabled/default
+    state: absent
+  tags:
+    - nginx
