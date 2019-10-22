@@ -1,2 +1,5 @@
 ---
-# handlers file for dubzland-nginx
+- name: reload nginx
+  service:
+    name: nginx
+    state: reloaded
