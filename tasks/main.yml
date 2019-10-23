@@ -9,7 +9,19 @@
 
 - name: ensure the default site is not configured
   file:
-    name: /etc/nginx/sites-enabled/default
+    name: "{{ _nginx_default_vhost_path }}"
     state: absent
   tags:
     - nginx
+
+- name: ensure any vhosts are configured
+  template: "{{ item.template }}"
+    dest: "{{ _nginx_vhost_path }}/{{ item.filename }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items: "{{ dubzland_nginx_vhosts }}"
+  notify: reload nginx
+  tags:
+    - nginx
+

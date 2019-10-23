@@ -1,2 +1,2 @@
 ---
-# defaults file for dubzland-nginx
+dubzland_nginx_vhosts: []
