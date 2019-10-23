@@ -15,7 +15,8 @@
     - nginx
 
 - name: ensure any vhosts are configured
-  template: "{{ item.template }}"
+  template:
+    src: "{{ item.template }}"
     dest: "{{ _nginx_vhost_path }}/{{ item.filename }}"
     owner: root
     group: root
