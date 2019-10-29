@@ -18,5 +18,3 @@
   notify: reload nginx
   tags:
     - nginx
-
-
