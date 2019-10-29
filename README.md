@@ -62,4 +62,4 @@ MIT
 
 ## Author
 
-# [Josh Williams](https://codingprime.com)
+* [Josh Williams](https://codingprime.com)
