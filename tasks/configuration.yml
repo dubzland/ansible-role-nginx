@@ -3,7 +3,8 @@
   file:
     name: "{{ dubzland_nginx_default_vhost_file }}"
     state: absent
-    when: (dubzland_nginx_default_vhost_enabled | bool) == false
+  when: not dubzland_nginx_default_vhost_enabled
+  notify: reload nginx
   tags:
     - nginx
 

@@ -1,6 +1,6 @@
 ---
 - name: set os-specific variables
-  include_vars: "{{ lookup('first_round', params) }}"
+  include_vars: "{{ lookup('first_found', params) }}"
   vars:
     params:
       files:
@@ -15,7 +15,7 @@
     dubzland_nginx_package:
       "{{ [dubzland_nginx_package_name, dubzland_nginx_package_version]
       | join(dubzland_nginx_package_version_separator) }}"
-  when: dubzland_nginx_package_version != ''
+  when: dubzland_nginx_package_version | length > 0
 
 - name: Define the default NGINX vhost file name
   set_fact:
