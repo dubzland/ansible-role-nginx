@@ -1,0 +1,20 @@
+---
+- name: set os-specific variables
+  include_vars: "{{ lookup('first_round', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_os_family }}-{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+        - "default.yml"
+      paths:
+        - vars
+
+- name: Define the NGINX package name
+  set_fact:
+    dubzland_nginx_package: "{{ dubzland_nginx_package_name }}{{ dubzland_nginx_package_version_separator }}{{ dubzland_nginx_package_version }}"
+  when: dubzland_nginx_package_version != ''
+
+- name: Define the default NGINX vhost file name
+  set_fact:
+    dubzland_nginx_default_vhost_file: "{{ dubzland_nginx_vhost_path }}/default"

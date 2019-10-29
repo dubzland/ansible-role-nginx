@@ -1,38 +1,65 @@
-Role Name
-=========
+# Dubzland: NGINX
+[![Gitlab pipeline status (self-hosted)](https://img.shields.io/gitlab/pipeline/jdubz/dubzland-nginx?gitlab_url=https%3A%2F%2Fgit.dubzland.net)](https://git.dubzland.net/jdubz/dubzland-nginx/pipelines)
 
-A brief description of the role goes here.
+Installs and configures the NGINX Web Server.
 
-Requirements
-------------
+## Requirements
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Ansible version 2.0 or higher
 
-Role Variables
---------------
+## Role Variables
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Available variables are listed below, along with their default values (see `defaults/main.yml` for more info):
 
-Dependencies
-------------
+### dubzland_nginx_package_name
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+```yaml
+dubzland_nginx_package_name: nginx
+```
 
-Example Playbook
-----------------
+The name of the NGINX package to install.
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+### dubzland_nginx_package_version
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+dubzland_nginx_package_version: ""
+```
 
-License
--------
+Specific version of NGINX to install.  Needs to be formatted according to the
+OS specific package manager.
 
-BSD
+### dubzland_nginx_vhosts
 
-Author Information
-------------------
+```yaml
+dubzland_nginx_vhosts: []
+```
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+List of vhosts to configure and enable.
+
+### dubzland_nginx_default_vhost_enabled
+
+```yaml
+dubzland_nginx_default_vhost_enabled: false
+```
+
+Set to `true` to keep the the default vhost.
+
+## Dependencies
+
+None
+
+## Example Playbook
+
+```yaml
+- hosts: web-servers
+  roles:
+    - role: dubzland_nginx
+```
+
+## License
+
+MIT
+
+## Author
+
+# [Josh Williams](https://codingprime.com)

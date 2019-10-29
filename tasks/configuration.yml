@@ -1,0 +1,22 @@
+---
+- name: Remove the default NGINX vhost file (if configured)
+  file:
+    name: "{{ dubzland_nginx_default_vhost_file }}"
+    state: absent
+    when: (dubzland_nginx_default_vhost_enabled | bool) == false
+  tags:
+    - nginx
+
+- name: ensure any NGINX vhosts are configured
+  template:
+    src: "{{ item.template }}"
+    dest: "{{ dubzland_nginx_vhost_path }}/{{ item.filename }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items: "{{ dubzland_nginx_vhosts }}"
+  notify: reload nginx
+  tags:
+    - nginx
+
+

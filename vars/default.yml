@@ -1,0 +1,5 @@
+---
+dubzland_nginx_prerequisites: []
+dubzland_nginx_package_version_separator: ""
+dubzland_nginx_vhost_path: /etc/nginx/sites-enabled
+dubzland_nginx_service_name: nginx

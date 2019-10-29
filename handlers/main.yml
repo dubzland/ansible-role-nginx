@@ -1,5 +1,10 @@
 ---
+- name: enable nginx
+  service:
+    name: "{{ dubzland_nginx_service_name }}"
+    enabled: true
+
 - name: reload nginx
   service:
-    name: nginx
+    name: "{{ dubzland_nginx_service_name }}"
     state: reloaded

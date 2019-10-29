@@ -1,28 +1,11 @@
 ---
-- name: ensure nginx is installed
-  apt:
-    name: nginx
-    state: present
-  tags:
-    - nginx
-    - apt
+- import_tasks: variables.yml
+- import_tasks: packages.yml
+- import_tasks: configuration.yml
 
-- name: ensure the default site is not configured
-  file:
-    name: "{{ _nginx_default_vhost_path }}"
-    state: absent
-  tags:
-    - nginx
+- meta: flush_handlers
 
-- name: ensure any vhosts are configured
-  template:
-    src: "{{ item.template }}"
-    dest: "{{ _nginx_vhost_path }}/{{ item.filename }}"
-    owner: root
-    group: root
-    mode: 0644
-  with_items: "{{ dubzland_nginx_vhosts }}"
-  notify: reload nginx
-  tags:
-    - nginx
-
+- name: ensure NGINX is running
+  service:
+    name: "{{ dubzland_nginx_service_name }}"
+    state: started

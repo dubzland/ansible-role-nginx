@@ -1,2 +1,5 @@
 ---
+dubzland_nginx_package_name: nginx
+dubzland_nginx_package_version: ""
 dubzland_nginx_vhosts: []
+dubzland_nginx_default_vhost_enabled: false
