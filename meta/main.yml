@@ -2,6 +2,7 @@
 dependencies: []
 
 galaxy_info:
+  role_name: nginx
   author: t3hprm13
   description: NGINX Web Server for Debian
   company: Cedar House Labs
