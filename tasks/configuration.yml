@@ -1,4 +1,21 @@
 ---
+- name: ensure the ssl directory exists
+  file:
+    path: /etc/nginx/ssl
+    state: directory
+    owner: root
+    group: root
+    mode: 0600
+  tags:
+    - nginx
+
+- name: ensure the DH params are generated
+  command: openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
+  args:
+    creates: /etc/nginx/ssl/dhparam.pem
+  tags:
+    - nginx
+
 - name: Remove the default NGINX vhost file (if configured)
   file:
     name: "{{ dubzland_nginx_default_vhost_file }}"
