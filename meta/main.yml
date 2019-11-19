@@ -13,4 +13,6 @@ galaxy_info:
       versions:
         - all
   galaxy_tags:
-    - dhcp
+    - nginx
+    - web
+    - http
