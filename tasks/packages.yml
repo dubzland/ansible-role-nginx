@@ -5,6 +5,15 @@
   tags:
     - nginx
 
+- when: ansible_distribution == 'Ubuntu'
+  block:
+    - name: add the nginx stable repo
+      apt_repository:
+        repo: ppa:nginx/stable
+        state: present
+      tags:
+        - nginx
+
 - name: ensure NGINX is installed
   package:
     name: "{{ dubzland_nginx_package | default(dubzland_nginx_package_name) }}"
