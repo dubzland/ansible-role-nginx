@@ -11,6 +11,7 @@
       apt_repository:
         repo: ppa:nginx/stable
         state: present
+        update_cache: yes
       tags:
         - nginx
 
